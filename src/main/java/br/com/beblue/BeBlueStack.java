@@ -25,7 +25,7 @@ public class BeBlueStack {
 			this.min = newItem;
 		} else if (newItem < this.min) {
 			// Se o novo item (push) for menor que o mínimo, o mínimo deve ser atualizado.
-			// Antes isso, executamos uma equacão para o cálculo do valor de referência,
+			// Antes isso, executamos uma equacão para o cálculo do valor de referência projetado,
 			// que viabilizará as operacões em O(1).
 			topItem = this.evalMin(newItem, this.min);
 			this.min = newItem;
@@ -39,8 +39,8 @@ public class BeBlueStack {
 		}
 		final Integer topItem = this.stack.pop();
 		if (topItem < this.min) {
-			// Se o valor do pop (topo) for menor que o mínimo, então ele é o próprio mínimo (vide método evalMin).
-			// Com isso, usamos novamente a equacão para calcular o novo minimo (já que o atual foi removido).
+			// Se o valor do pop (topo) for menor que o mínimo, então ele é o próprio mínimo e será removido, 
+			// devido à projecão do método evalMin. Com isso, usamos novamente a equacão para recalcular o mínimo.
 			this.min = this.evalMin(this.min, topItem);
 		}
 	}
